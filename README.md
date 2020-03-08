@@ -1,17 +1,16 @@
 # daikinCleaner
-`ダイキン 加湿ストリーマ空気清浄機 MCK70W`
-上記機種をAppleHomeで制御する。
-
+`ダイキン 加湿ストリーマ空気清浄機 MCK70W`  
+上記機種をAppleHomeで制御する。  
 Siri,appleWatch,iPhoneのHomeで操作検証済み。
 
 # API仕様
 
 ## 基本情報取得
-機種の主な情報、設定したユーザー名や、パスワードなどの取得
+機種の主な情報、設定したユーザー名や、パスワードなどの取得  
 `/common/basic_info`
 
 ## センサー取得
-空気清浄機のセンサー情報を取得
+空気清浄機のセンサー情報を取得  
 `/cleaner/get_sensor_info`
 
 取得内容
@@ -23,13 +22,13 @@ Siri,appleWatch,iPhoneのHomeで操作検証済み。
 - odor: ニオイ
 
 ## タイマー情報
-/cleaner/get_scdltimer_body?target=c
+`/cleaner/get_scdltimer_body?target=c`
 
 ## コントロール取得
 `/cleaner/get_control_info`
 
-## 機種を制御。コントロールする
-GETでリクエスト
+## 空気清浄機をコントロールする
+GETでリクエスト  
 `/cleaner/set_control_info`
 
 パラメータは以下の通り
@@ -41,10 +40,11 @@ GETでリクエスト
 
 ### pow
 電源(power)パラメータ
-off=0, on=1
 
-powパラメータだけの指定でも可。
-その場合は、前回の設定で稼働となる。
+- off=0
+- on=1
+
+powパラメータだけの指定でも可。その場合は、前回の設定で稼働となる。  
 それ以外は全パラメータのリクエストが必要
 
 ### mode
@@ -73,7 +73,7 @@ powパラメータだけの指定でも可。
 - 1:しずか
 - 2:弱
 - 3:標準
-- 4:-
+- 4:-(無し)
 - 5:ターボ
 
 # プログラム(dsaikinCleaner.py)引数
