@@ -4,10 +4,11 @@ import requests
 
 args = sys.argv
 if len(args) == 1:
-    print('引数なし')
+    print('An argument is necessary.')
     exit()
 arg = args[1]
 
+# 空気清浄機のIPアドレス
 url = 'http://192.168.0.10'
 
 # 基本情報
@@ -20,11 +21,7 @@ get_control = '/cleaner/get_control_info'
 # コントロールSET
 set_control = '/cleaner/set_control_info'
 
-
-def control(params):
-    return requests.get(url + set_control, params)
-
-
+# 実行したいパラメータのセット
 param_off = {'pow': 0}
 
 param_max = {'pow': 1,
@@ -39,7 +36,12 @@ param_hum = {'pow': 1,
              'airvol': 0,
              }
 
-print(arg)
+
+def control(params):
+    return requests.get(url + set_control, params)
+
+
+print('param: ', arg)
 
 if arg == 'off':
     res = control(param_off)
@@ -53,4 +55,4 @@ elif arg == 'hum':
 else:
     text = 'nothing'
 
-print(text)
+print('res: ', text)
